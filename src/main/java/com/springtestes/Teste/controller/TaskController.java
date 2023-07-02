@@ -24,12 +24,12 @@ public class TaskController {
     @PostMapping("/create")
     public String create(Task task) {
         repository.save(task);
-        return "redirect:/lista";
+        return "redirect:/list";
     }
 
-    @GetMapping("/lista")
+    @GetMapping("/list")
     public ModelAndView list() {
-       ModelAndView mv = new ModelAndView("lista");
+       ModelAndView mv = new ModelAndView("list");
        mv.addObject("tasks", repository.findAll());
        return mv;
     }
@@ -45,6 +45,6 @@ public class TaskController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         repository.deleteById(id);
-        return "redirect:/lista";
+        return "redirect:/list";
     }
 }
